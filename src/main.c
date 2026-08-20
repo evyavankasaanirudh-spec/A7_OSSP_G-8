@@ -1,12 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include "process_explorer.h"
+
+#include "../include/process_explorer.h"
+#include "../include/input.h"
 
 void display_banner(void)
 {
     printf("============================================\n");
-    printf("       Linux Process Explorer v1.0\n");
+    printf("       Linux Process Explorer v2.0\n");
     printf("============================================\n");
+    printf("Dynamic input enabled.\n");
     printf("Type 'help' to see available commands.\n\n");
 }
 
@@ -23,7 +27,7 @@ void display_help(void)
 
 int main(void)
 {
-    char input[MAX_INPUT];
+    char *line;
 
     display_banner();
 
@@ -31,44 +35,38 @@ int main(void)
     {
         printf("process-explorer> ");
 
-        if (fgets(input, sizeof(input), stdin) == NULL)
+        line = read_line();
+
+        if (strcmp(line, "exit") == 0)
         {
-            printf("\n");
+            free(line);
             break;
         }
 
-        input[strcspn(input, "\n")] = '\0';
-
-        if (strcmp(input, "exit") == 0)
-        {
-            printf("Exiting Linux Process Explorer...\n");
-            break;
-        }
-        else if (strcmp(input, "help") == 0)
+        if (strcmp(line, "help") == 0)
         {
             display_help();
         }
-        else if (strcmp(input, "list") == 0)
+        else if (strcmp(line, "list") == 0)
         {
-            printf("\nProcess listing module will be implemented in the next phase.\n\n");
+            printf("\nProcess listing module will be implemented in a later phase.\n\n");
         }
-        else if (strcmp(input, "info") == 0)
+        else if (strcmp(line, "info") == 0)
         {
             printf("\nLinux Process Explorer\n");
-            printf("Version : 1.0\n");
-            printf("Module  : REPL Foundation\n");
-            printf("Status  : Week 1 Implementation\n\n");
+            printf("Version : 2.0\n");
+            printf("Module  : Dynamic Input\n");
+            printf("Status  : Week 2 Implementation\n\n");
         }
-        else if (strlen(input) == 0)
+        else if (strlen(line) != 0)
         {
-            continue;
+            printf("You entered: %s\n\n", line);
         }
-        else
-        {
-            printf("Unknown command: %s\n", input);
-            printf("Type 'help' for available commands.\n\n");
-        }
+
+        free(line);
     }
+
+    printf("Goodbye!\n");
 
     return 0;
 }

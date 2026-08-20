@@ -32,3 +32,11 @@ CPU usage, memory usage, and process priority.
 
 ```bash
 make
+
+## Week 2 Features
+
+- Dynamic command input
+- Memory allocation using malloc()
+- Automatic buffer expansion using realloc()
+- Proper memory cleanup using free()
+- Modular input handling using input.c and input.h
