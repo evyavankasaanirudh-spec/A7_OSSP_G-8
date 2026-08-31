@@ -4,30 +4,22 @@
 
 #include "../include/process_explorer.h"
 #include "../include/input.h"
+#include "../include/parser.h"
 
 void display_banner(void)
 {
     printf("============================================\n");
-    printf("       Linux Process Explorer v2.0\n");
+    printf("       Linux Process Explorer v3.0\n");
     printf("============================================\n");
-    printf("Dynamic input enabled.\n");
-    printf("Type 'help' to see available commands.\n\n");
-}
-
-void display_help(void)
-{
-    printf("\nAvailable Commands:\n");
-    printf("--------------------------------------------\n");
-    printf("help    - Display available commands\n");
-    printf("list    - List running processes (coming soon)\n");
-    printf("info    - Display system/process information\n");
-    printf("exit    - Exit Linux Process Explorer\n");
-    printf("--------------------------------------------\n\n");
+    printf("Command parsing enabled.\n");
+    printf("Type 'exit' to quit.\n\n");
 }
 
 int main(void)
 {
     char *line;
+    char **tokens;
+    int i;
 
     display_banner();
 
@@ -43,26 +35,19 @@ int main(void)
             break;
         }
 
-        if (strcmp(line, "help") == 0)
+        tokens = parse_line(line);
+
+        printf("\nParsed Tokens\n");
+        printf("--------------------------------------------\n");
+
+        for (i = 0; tokens[i] != NULL; i++)
         {
-            display_help();
-        }
-        else if (strcmp(line, "list") == 0)
-        {
-            printf("\nProcess listing module will be implemented in a later phase.\n\n");
-        }
-        else if (strcmp(line, "info") == 0)
-        {
-            printf("\nLinux Process Explorer\n");
-            printf("Version : 2.0\n");
-            printf("Module  : Dynamic Input\n");
-            printf("Status  : Week 2 Implementation\n\n");
-        }
-        else if (strlen(line) != 0)
-        {
-            printf("You entered: %s\n\n", line);
+            printf("argv[%d] = %s\n", i, tokens[i]);
         }
 
+        printf("--------------------------------------------\n\n");
+
+        free_tokens(tokens);
         free(line);
     }
 
