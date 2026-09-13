@@ -48,3 +48,30 @@ make
 - Modular parser implementation
 - NULL-terminated argument vector
 - Ready for process execution with execvp()
+
+## Week 4 Features
+
+- Real Linux command execution
+- Process creation using fork()
+- Command execution using execvp()
+- Parent process synchronization using waitpid()
+- Error handling using perror()
+- Child process execution
+- Parent process waits for the child process to finish
+
+## Week 4 System Calls
+
+| System Call | Purpose |
+|---|---|
+| fork() | Creates a child process |
+| execvp() | Executes the entered Linux command |
+| waitpid() | Makes the parent wait for the child process |
+| perror() | Displays error messages |
+
+## Running the Project
+
+Compile the project:
+
+```bash
+make clean
+make
