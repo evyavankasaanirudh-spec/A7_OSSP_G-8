@@ -5,6 +5,7 @@
 #include "../include/process_explorer.h"
 #include "../include/input.h"
 #include "../include/parser.h"
+#include "../include/process.h"
 
 void display_banner(void)
 {
@@ -19,8 +20,6 @@ int main(void)
 {
     char *line;
     char **tokens;
-    int i;
-
     display_banner();
 
     while (1)
@@ -37,16 +36,10 @@ int main(void)
 
         tokens = parse_line(line);
 
-        printf("\nParsed Tokens\n");
-        printf("--------------------------------------------\n");
-
-        for (i = 0; tokens[i] != NULL; i++)
-        {
-            printf("argv[%d] = %s\n", i, tokens[i]);
-        }
-
-        printf("--------------------------------------------\n\n");
-
+        if (tokens[0] != NULL)
+	{
+    		execute(tokens);
+	}
         free_tokens(tokens);
         free(line);
     }
@@ -55,3 +48,4 @@ int main(void)
 
     return 0;
 }
+	
