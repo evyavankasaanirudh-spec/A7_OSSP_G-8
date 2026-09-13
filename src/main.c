@@ -6,6 +6,7 @@
 #include "../include/input.h"
 #include "../include/parser.h"
 #include "../include/process.h"
+#include "../include/builtin.h"
 
 void display_banner(void)
 {
@@ -38,7 +39,10 @@ int main(void)
 
         if (tokens[0] != NULL)
 	{
-    		execute(tokens);
+    		if (execute_builtin(tokens) == 0)
+    		{
+        		execute(tokens);
+    		}
 	}
         free_tokens(tokens);
         free(line);

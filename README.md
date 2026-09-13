@@ -75,3 +75,30 @@ Compile the project:
 ```bash
 make clean
 make
+
+## Week 5 Features
+
+- Built-in command support
+- `cd` command using `chdir()`
+- `pwd` command using `getcwd()`
+- `help` command
+- `clear` command
+- `exit` command
+- `env` command
+- Environment variable access using `getenv()`
+- Built-in commands execute in the parent process
+- External commands continue to use `fork()` and `execvp()`
+
+## Week 5 Environment Variables
+
+The project currently displays:
+
+- `HOME` - User home directory
+- `USER` - Current username
+- `PATH` - Executable search path
+
+## Week 5 Files Added
+
+```text
+include/builtin.h
+src/builtin.c
