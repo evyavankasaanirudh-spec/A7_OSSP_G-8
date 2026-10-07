@@ -102,3 +102,41 @@ The project currently displays:
 ```text
 include/builtin.h
 src/builtin.c
+
+## Week 6 Features
+
+- Improved process management
+- Modular process execution
+- Linux process handling using system calls
+- Improved command execution workflow
+
+## Week 7 Features
+
+- Anonymous pipe support
+- Two-command pipelines
+- Inter-process communication using file descriptors
+- `pipe()` system call
+- `dup2()` system call
+- Pipeline execution using `fork()` and `execvp()`
+
+## Week 8 Features
+
+- Memory leak detection using Valgrind
+- Debugging using GDB
+- AddressSanitizer (ASan) support
+- Defensive memory management
+- Improved error handling
+- Proper file descriptor and child process management
+
+## Week 8 Debugging Tools
+
+- Valgrind
+- GDB
+- AddressSanitizer (ASan)
+
+## Week 8 Validation
+
+- Valgrind reports no memory leaks
+- Valgrind reports zero errors
+- GDB used for program inspection and stack tracing
+- ASan build and execution completed successfully
