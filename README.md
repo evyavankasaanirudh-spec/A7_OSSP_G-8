@@ -157,3 +157,19 @@ src/builtin.c
 ```text
 include/redirect.h
 src/redirect.c	
+## Week 10 Features
+
+- POSIX thread support
+- Background monitoring thread
+- `pthread_create()`
+- `pthread_join()`
+- Mutex synchronization
+- Race condition demonstration
+
+## Week 10 Validation
+
+- POSIX thread support compiled successfully with `-pthread`
+- Background monitoring thread started successfully
+- Monitoring message displayed every 10 seconds
+- ShellForge remained interactive while the monitoring thread was running
+- Week 10 thread implementation tested successfully

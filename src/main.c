@@ -1,5 +1,6 @@
 #include "../include/pipes.h"
 #include "../include/redirect.h"
+#include "../include/thread.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,6 +26,7 @@ int main(void)
     char **tokens;
 
     display_banner();
+    start_monitor_thread();
 
     while (1)
     {
