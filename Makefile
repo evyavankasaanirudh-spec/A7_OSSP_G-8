@@ -6,7 +6,8 @@ SRC = src/main.c \
       src/parser.c \
       src/process.c \
       src/builtin.c \
-      src/pipes.c
+      src/pipes.c \
+      src/redirect.c
 
 TARGET = bin/process_explorer
 

@@ -1,4 +1,5 @@
 #include "../include/pipes.h"
+#include "../include/redirect.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -69,6 +70,20 @@ int main(void)
 
             free_tokens(argv1);
             free_tokens(argv2);
+            free(line);
+            continue;
+        }
+        /* Week 9: I/O redirection */
+        if (strstr(line, ">") != NULL || strstr(line, "<") != NULL)
+        {
+            tokens = parse_line(line);
+
+            if (tokens[0] != NULL)
+            {
+                execute_redirect(tokens);
+            }
+
+            free_tokens(tokens);
             free(line);
             continue;
         }

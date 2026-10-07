@@ -140,3 +140,20 @@ src/builtin.c
 - Valgrind reports zero errors
 - GDB used for program inspection and stack tracing
 - ASan build and execution completed successfully
+## Week 9 Features
+
+- File descriptor management
+- Input redirection using `<`
+- Output redirection using `>`
+- Append redirection using `>>`
+- Error redirection using `2>`
+- File operations using `open()`
+- File descriptor cleanup using `close()`
+- File descriptor duplication using `dup2()`
+- Integration of I/O redirection into ShellForge
+
+## Week 9 Files Added
+
+```text
+include/redirect.h
+src/redirect.c	
