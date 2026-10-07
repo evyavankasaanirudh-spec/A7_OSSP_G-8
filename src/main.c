@@ -1,3 +1,4 @@
+#include "../include/pipes.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -21,6 +22,7 @@ int main(void)
 {
     char *line;
     char **tokens;
+
     display_banner();
 
     while (1)
@@ -35,21 +37,56 @@ int main(void)
             break;
         }
 
+        /* Week 7: Pipe support */
+        if (strchr(line, '|') != NULL)
+        {
+            char *left;
+            char *right;
+            char **argv1;
+            char **argv2;
+
+            left = strtok(line, "|");
+            right = strtok(NULL, "|");
+
+            if (left == NULL || right == NULL)
+            {
+                printf("Invalid pipe command\n");
+                free(line);
+                continue;
+            }
+
+            argv1 = parse_line(left);
+            argv2 = parse_line(right);
+
+            if (argv1[0] != NULL && argv2[0] != NULL)
+            {
+                execute_pipe(argv1, argv2);
+            }
+            else
+            {
+                printf("Invalid pipe command\n");
+            }
+
+            free_tokens(argv1);
+            free_tokens(argv2);
+            free(line);
+            continue;
+        }
+
+        /* Existing command handling */
         tokens = parse_line(line);
 
         if (tokens[0] != NULL)
-	{
-    		if (execute_builtin(tokens) == 0)
-    		{
-        		execute(tokens);
-    		}
-	}
+        {
+            if (execute_builtin(tokens) == 0)
+            {
+                execute(tokens);
+            }
+        }
+
         free_tokens(tokens);
         free(line);
     }
 
-    printf("Goodbye!\n");
-
     return 0;
 }
-	
